@@ -1,0 +1,76 @@
+.swipe-button {
+  --progress: 0;
+  --progress-percent: 0%;
+  align-items: center;
+  background: var(--ion-color-primary);
+  border-radius: var(--stake-radius-pill);
+  cursor: pointer;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.swipe-button__fill {
+  background: var(--ion-color-primary-tint);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: width 200ms ease;
+  width: var(--progress-percent);
+  z-index: 1;
+}
+
+.swipe-button__label {
+  color: var(--ion-color-primary-contrast);
+  font-size: 16px;
+  font-weight: 800;
+  left: 50%;
+  letter-spacing: 0.25px;
+  opacity: calc(1 - var(--progress));
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 200ms ease;
+  user-select: none;
+  z-index: 2;
+}
+
+.swipe-button__thumb {
+  align-items: center;
+  cursor: grab;
+  display: flex;
+  height: 46px;
+  justify-content: center;
+  left: 2px;
+  position: absolute;
+  top: 2px;
+  touch-action: none;
+  width: 46px;
+  z-index: 3;
+}
+
+.swipe-button__icon {
+  height: 46px;
+  width: 46px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.swipe-button__touch-target {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.swipe-button--dragging .swipe-button__fill,
+.swipe-button--dragging .swipe-button__label {
+  transition: none;
+}
+
+.swipe-button--dragging .swipe-button__thumb {
+  cursor: grabbing;
+}
