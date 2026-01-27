@@ -1,0 +1,27 @@
+<ion-content class="search-page" [scrollY]="true">
+  <app-status-bar></app-status-bar>
+  <div class="search-page__header">
+    <div class="search-page__field">
+      <img class="search-page__icon" src="assets/default/search.svg" alt="" />
+      <input
+        class="search-page__input"
+        type="text"
+        placeholder="Search stocks"
+        [ngModel]="query"
+        (ngModelChange)="onQueryChange($event)"
+      />
+    </div>
+    <button class="search-page__cancel" type="button" (click)="onCancel()">
+      Cancel
+    </button>
+  </div>
+
+  <ion-list class="search-page__results" lines="none">
+    <app-instrument-row
+      *ngFor="let result of results$ | async"
+      [symbol]="result.symbol"
+      [subtitle]="result.name"
+      (click)="onSelectResult(result)"
+    ></app-instrument-row>
+  </ion-list>
+</ion-content>
