@@ -1,0 +1,22 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+
+  <app-order-sheet
+    [isOpen]="(orderSheetOpen$ | async) ?? false"
+    [class.is-open]="(orderSheetOpen$ | async) ?? false"
+    [stock]="selectedStock$ | async"
+    [orderDraft]="orderDraft$ | async"
+    [isProcessing]="(orderPending$ | async) ?? false"
+    [resetSignal]="resetSignal"
+    (dismiss)="onOrderDismiss()"
+    (confirm)="onOrderConfirm()"
+    (amountChange)="onAmountChange($event)"
+    (sharesChange)="onSharesChange($event)"
+  ></app-order-sheet>
+
+  <app-toast
+    *ngIf="toastMessage$ | async as message"
+    [message]="message"
+    (dismissed)="onToastDismiss()"
+  ></app-toast>
+</ion-app>
