@@ -1,0 +1,46 @@
+<ion-content class="discover-page" [scrollY]="true">
+  <div class="discover-page__header">
+    <app-status-bar></app-status-bar>
+    <button
+      class="discover-page__search"
+      type="button"
+      (click)="onSearch()"
+    >
+      <div class="discover-page__search-left">
+        <img class="discover-page__search-icon" src="assets/default/search.svg" alt="" />
+        <span class="discover-page__search-text">Search</span>
+      </div>
+    </button>
+  </div>
+
+  <div class="discover-page__content">
+    <div class="discover-page__section discover-page__section--first">
+      <app-section-header title="Recently searched"></app-section-header>
+      <ion-list class="discover-page__list" lines="none">
+        <app-instrument-row
+          *ngFor="let item of recentlySearched$ | async"
+          [symbol]="item.symbol"
+          [subtitle]="item.subtitle"
+          [price]="item.price"
+          (click)="onSelectRecent(item)"
+        ></app-instrument-row>
+      </ion-list>
+    </div>
+
+    <div class="discover-page__section discover-page__section--featured">
+      <app-section-header title="Top 3 volume stock"></app-section-header>
+      <app-stock-card
+        *ngFor="let featured of featuredStocks$ | async"
+        size="large"
+        [symbol]="featured.symbol"
+        [name]="featured.name"
+        [price]="featured.price"
+        [logoUrl]="featured.logoUrl ?? ''"
+        [typeLabel]="featured.typeLabel"
+        [metrics]="featuredMetrics"
+        (click)="onSelectFeatured(featured)"
+      ></app-stock-card>
+    </div>
+  </div>
+
+</ion-content>
