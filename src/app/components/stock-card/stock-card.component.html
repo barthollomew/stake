@@ -1,0 +1,41 @@
+<ion-card
+  class="stock-card"
+  [class.stock-card--large]="size === 'large'"
+  [class.stock-card--small]="size === 'small'"
+>
+  <div class="stock-card__top">
+    <div
+      class="stock-card__logo"
+      [class.stock-card__logo--placeholder]="!logoUrl || logoError"
+      [ngClass]="logoSizeClass"
+      [attr.data-symbol]="symbol.toLowerCase()"
+    >
+      <span class="stock-card__logo-text">{{ symbol.charAt(0) }}</span>
+      <img *ngIf="logoUrl && !logoError" [src]="logoUrl" alt="" (error)="onLogoError()" />
+    </div>
+    <div class="stock-card__chip">{{ typeLabel }}</div>
+  </div>
+
+  <ng-container *ngIf="size === 'large'; else smallLayout">
+    <div class="stock-card__price">${{ price | number: '1.2-2' }}</div>
+    <div class="stock-card__meta">
+      <span class="stock-card__symbol">{{ symbol }}</span>
+      <span class="stock-card__dot">•</span>
+      <span class="stock-card__name">{{ name }}</span>
+    </div>
+    <div class="stock-card__metrics" *ngIf="metrics.length">
+      <div class="stock-card__metric" *ngFor="let metric of metrics">
+        <img [src]="metric.icon" alt="" />
+        <span>{{ metric.value }}</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #smallLayout>
+    <div class="stock-card__meta-stack">
+      <div class="stock-card__symbol">{{ symbol }}</div>
+      <div class="stock-card__name">{{ name }}</div>
+    </div>
+    <div class="stock-card__price">${{ price | number: '1.2-2' }}</div>
+  </ng-template>
+</ion-card>
