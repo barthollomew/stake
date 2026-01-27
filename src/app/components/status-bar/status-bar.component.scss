@@ -1,0 +1,20 @@
+.status-bar {
+  align-items: center;
+  color: #000000;
+  display: flex;
+  height: 44px;
+  justify-content: space-between;
+  padding: 13px 0;
+}
+
+.status-bar__time {
+  font-family: 'SF Pro Text', 'Universal Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.165px;
+}
+
+.status-bar__icons {
+  height: 13px;
+  width: 71px;
+}
