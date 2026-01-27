@@ -1,0 +1,81 @@
+:host {
+  display: block;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.instrument-row {
+  --background: transparent;
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
+  --min-height: auto;
+  --padding-end: 0;
+  --padding-start: 0;
+  cursor: pointer;
+}
+
+.instrument-row::part(native) {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: var(--instrument-row-padding-y, 10px) 0;
+}
+
+.instrument-row__left {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.instrument-row__symbol {
+  color: var(--ion-color-primary);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 1.3;
+}
+
+.instrument-row__subtitle {
+  color: var(--ion-color-medium);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 1.3;
+}
+
+.instrument-row__right {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.instrument-row__price {
+  color: var(--ion-color-primary);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 1.3;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.instrument-row__chip {
+  align-items: center;
+  background: var(--ion-color-success);
+  border-radius: 4px;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  height: 26px;
+  justify-content: center;
+  letter-spacing: 0.25px;
+  padding: 0 9px;
+  white-space: nowrap;
+}
+
+.instrument-row__chip.is-negative {
+  background: var(--ion-color-secondary);
+}

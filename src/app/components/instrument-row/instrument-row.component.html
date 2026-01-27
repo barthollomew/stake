@@ -1,0 +1,22 @@
+<ion-item class="instrument-row" [button]="true" [detail]="false" lines="none">
+  <div class="instrument-row__left">
+    <div class="instrument-row__symbol">{{ symbol }}</div>
+    <div class="instrument-row__subtitle">{{ subtitle }}</div>
+  </div>
+  <div
+    class="instrument-row__right"
+    slot="end"
+    *ngIf="price !== null || changePercent !== null"
+  >
+    <div class="instrument-row__price" *ngIf="price !== null">
+      ${{ price | number: '1.2-2' }}
+    </div>
+    <div
+      class="instrument-row__chip"
+      *ngIf="changePercent !== null"
+      [class.is-negative]="(changePercent || 0) < 0"
+    >
+      {{ changeLabel }}
+    </div>
+  </div>
+</ion-item>
