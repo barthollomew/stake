@@ -1,0 +1,29 @@
+<ion-tabs class="tabs">
+  <ion-router-outlet></ion-router-outlet>
+  <ion-tab-bar slot="bottom" class="tabs__bar">
+    <ion-tab-button
+      tab="invest"
+      class="tabs__button ion-no-ripple"
+      [routerLink]="['/invest']"
+    >
+      <img
+        class="tabs__icon tabs__icon--invest"
+        src="assets/default/portfolio.svg"
+        alt=""
+      />
+      <ion-label class="tabs__label">Invest</ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      tab="discover"
+      class="tabs__button ion-no-ripple"
+      [routerLink]="['/discover']"
+    >
+      <img
+        class="tabs__icon tabs__icon--discover"
+        src="assets/default/search.svg"
+        alt=""
+      />
+      <ion-label class="tabs__label">Discover</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
