@@ -1,0 +1,59 @@
+<ion-modal
+  [isOpen]="isOpen"
+  cssClass="order-sheet-modal"
+  [enterAnimation]="enterAnimation"
+  [leaveAnimation]="leaveAnimation"
+  [backdropDismiss]="!isProcessing"
+  (didDismiss)="dismiss.emit()"
+>
+  <ng-template>
+    <div class="order-sheet" *ngIf="stock && orderDraft">
+      <div class="order-sheet__content">
+        <div class="order-sheet__header">
+          <span>{{ stock.symbol }}</span>
+          <span>${{ stock.price | number: '1.2-2' }}</span>
+        </div>
+
+        <div class="order-sheet__inputs">
+          <div class="order-sheet__input">
+            <label class="order-sheet__label">Price</label>
+            <div class="order-sheet__value">{{ priceLabel }}</div>
+          </div>
+          <div class="order-sheet__input order-sheet__input--editable">
+            <label class="order-sheet__label" for="order-amount">Amount ($)</label>
+            <input
+              id="order-amount"
+              class="order-sheet__field"
+              type="number"
+              step="0.01"
+              min="0"
+              [value]="orderDraft.amount"
+              (input)="onAmountInput($event)"
+              [disabled]="isProcessing"
+            />
+          </div>
+          <div class="order-sheet__input order-sheet__input--editable">
+            <label class="order-sheet__label" for="order-shares">Shares</label>
+            <input
+              id="order-shares"
+              class="order-sheet__field"
+              type="number"
+              step="0.01"
+              min="0"
+              [value]="orderDraft.shares"
+              (input)="onSharesInput($event)"
+              [disabled]="isProcessing"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="order-sheet__actions">
+        <app-swipe-button
+          [resetSignal]="resetSignal"
+          (completed)="confirm.emit()"
+        ></app-swipe-button>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

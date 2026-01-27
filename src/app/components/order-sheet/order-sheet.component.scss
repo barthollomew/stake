@@ -1,0 +1,116 @@
+// Modal dimensions and border radius
+$modal-width: 374px;
+$modal-height: 394px;
+$modal-margin: 16px;
+$modal-radius-top: var(--stake-radius-xl);
+$modal-radius-bottom: var(--stake-radius-3xl);
+
+:host ::ng-deep ion-modal.order-sheet-modal {
+  --background: var(--ion-background-color);
+  --border-radius: #{$modal-radius-top} #{$modal-radius-top} #{$modal-radius-bottom} #{$modal-radius-bottom};
+  --box-shadow: none;
+  --height: #{$modal-height};
+  --max-width: #{$modal-width};
+  --width: min(#{$modal-width}, calc(100% - #{$modal-margin * 2}));
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+:host ::ng-deep ion-modal.order-sheet-modal::part(backdrop) {
+  background: rgba(var(--ion-color-primary-rgb), 0.15);
+}
+
+:host ::ng-deep ion-modal.order-sheet-modal::part(content) {
+  align-self: flex-end;
+  border-radius: $modal-radius-top $modal-radius-top $modal-radius-bottom $modal-radius-bottom;
+  margin: 0 $modal-margin var(--stake-space-5);
+  max-width: $modal-width;
+  overflow: hidden;
+  width: min(#{$modal-width}, calc(100% - #{$modal-margin * 2}));
+}
+
+.order-sheet {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--stake-space-6) var(--stake-space-4) var(--stake-space-4);
+}
+
+.order-sheet__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stake-space-5);
+}
+
+.order-sheet__header {
+  color: var(--ion-color-primary);
+  display: flex;
+  font-size: 22px;
+  font-weight: 800;
+  gap: var(--stake-space-2);
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.order-sheet__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stake-space-2);
+}
+
+.order-sheet__input {
+  border: 1.5px solid var(--stake-color-border-input);
+  border-radius: var(--stake-radius-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  height: 50px;
+  justify-content: center;
+  padding: 0 var(--stake-space-4);
+}
+
+.order-sheet__label {
+  color: var(--stake-color-text-subtle);
+  font-size: 12px;
+  letter-spacing: 0.25px;
+}
+
+.order-sheet__value {
+  color: var(--ion-color-primary);
+  font-size: 13px;
+  letter-spacing: 0.25px;
+}
+
+.order-sheet__input--editable {
+  cursor: text;
+}
+
+.order-sheet__field {
+  background: transparent;
+  border: none;
+  color: var(--ion-color-primary);
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.25px;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}
+
+.order-sheet__field:disabled {
+  opacity: 0.6;
+}
+
+.order-sheet__field::-webkit-inner-spin-button,
+.order-sheet__field::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.order-sheet__field[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.order-sheet__actions {
+  margin-top: var(--stake-space-4);
+}
