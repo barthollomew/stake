@@ -1,0 +1,13 @@
+.section-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-header__title {
+  color: var(--ion-color-primary);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  line-height: 1.2;
+}
