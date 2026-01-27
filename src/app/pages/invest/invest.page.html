@@ -1,0 +1,78 @@
+<ion-content class="invest-page" [scrollY]="true">
+  <app-status-bar></app-status-bar>
+  <div class="invest-page__header">
+    <div class="invest-page__title">Dashboard</div>
+  </div>
+
+  <div class="invest-page__summary">
+    <div class="invest-page__label">Total equity</div>
+    <div class="invest-page__value">
+      <ng-container *ngIf="totalEquity$ | async as total">
+        <span
+          class="invest-page__value-text"
+          *ngFor="let value of [total]; trackBy: trackByValue"
+          [@equitySwap]="value"
+        >
+          ${{ value | number: '1.0-0' }}
+        </span>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="invest-page__section">
+    <app-section-header title="Holdings"></app-section-header>
+    <div class="invest-page__holdings">
+      <div class="invest-page__holdings-header">
+        <span>Stock</span>
+        <span>Price</span>
+        <span>Change</span>
+      </div>
+      <ion-list class="invest-page__holdings-list" lines="none">
+        <ion-item
+          class="invest-page__holdings-row"
+          [button]="true"
+          [detail]="false"
+          lines="none"
+          *ngFor="let holding of holdings$ | async; trackBy: trackByHolding"
+          [@rowEnter]="holding.id"
+          (click)="onSelectHolding(holding)"
+        >
+          <div class="invest-page__holdings-row-content">
+            <div class="invest-page__holding-stock">
+              <div class="invest-page__holding-symbol">{{ holding.symbol }}</div>
+              <div class="invest-page__holding-shares">
+                {{ holding.shares | number: '1.2-4' }} shares
+              </div>
+            </div>
+            <div class="invest-page__holding-price">
+              ${{ holding.price | number: '1.2-2' }}
+            </div>
+            <div
+              class="invest-page__holding-change"
+              [class.is-negative]="holding.changePercent < 0"
+            >
+              {{ formatChange(holding.changePercent) }}
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+  <div class="invest-page__section invest-page__section--trending">
+    <app-section-header title="Trending stocks"></app-section-header>
+    <div class="invest-page__trending">
+      <app-stock-card
+        *ngFor="let trend of trending$ | async"
+        size="small"
+        [symbol]="trend.symbol"
+        [name]="trend.name"
+        [price]="trend.price"
+        [logoUrl]="trend.logoUrl ?? ''"
+        [typeLabel]="trend.typeLabel"
+        (click)="onSelectTrending(trend)"
+      ></app-stock-card>
+    </div>
+  </div>
+
+</ion-content>

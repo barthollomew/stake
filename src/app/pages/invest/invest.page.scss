@@ -1,0 +1,193 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.invest-page {
+  --padding-bottom: 24px;
+  --padding-start: 28px;
+  --padding-end: 28px;
+  --padding-top: 0;
+}
+
+.invest-page__header {
+  align-items: center;
+  display: flex;
+  height: 57px;
+}
+
+.invest-page__title {
+  color: #141414;
+  font-family: 'Universal Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.invest-page__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.invest-page__label {
+  color: var(--ion-color-primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+}
+
+.invest-page__value {
+  color: var(--ion-color-primary);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  min-height: 32px;
+  position: relative;
+}
+
+.invest-page__value-text {
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.invest-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.invest-page__holdings {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.invest-page__holdings-list {
+  background: transparent;
+  padding: 0;
+}
+
+.invest-page__holdings-row {
+  --background: transparent;
+  --inner-padding-end: 0;
+  --inner-padding-start: 0;
+  --min-height: auto;
+  --padding-end: 0;
+  --padding-start: 0;
+}
+
+.invest-page__holdings-row::part(native) {
+  padding: 10px 0;
+}
+
+.invest-page__holdings-header,
+.invest-page__holdings-row-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 90px 90px;
+  gap: 12px;
+  align-items: center;
+}
+
+.invest-page__holdings-header {
+  color: var(--ion-color-medium);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 1.3;
+  justify-content: initial;
+}
+
+.invest-page__holdings-header > span:nth-child(2),
+.invest-page__holdings-header > span:nth-child(3) {
+  text-align: right;
+}
+
+.invest-page__holdings-row-content {
+  gap: 12px;
+  justify-content: initial;
+  width: 100%;
+}
+
+.invest-page__holding-stock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.invest-page__holding-symbol {
+  color: var(--ion-color-primary);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 1.3;
+}
+
+.invest-page__holding-shares {
+  color: var(--ion-color-medium);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 1.3;
+}
+
+.invest-page__holding-price {
+  color: var(--ion-color-primary);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  line-height: 1.3;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.invest-page__holding-change {
+  align-items: center;
+  background: var(--ion-color-success);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 700;
+  height: 26px;
+  justify-content: center;
+  justify-self: end;
+  letter-spacing: 0.25px;
+  padding: 0;
+  text-align: center;
+  white-space: nowrap;
+  width: 70px;
+}
+
+.invest-page__holding-change.is-negative {
+  background: var(--ion-color-secondary);
+}
+
+.invest-page__trending app-stock-card {
+  cursor: pointer;
+  min-width: 113px;
+}
+
+.invest-page__trending {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  touch-action: pan-x;
+  scrollbar-width: none;
+}
+
+.invest-page__trending::-webkit-scrollbar {
+  display: none;
+}
+
